@@ -19,10 +19,14 @@ int revesPuzzle(int n) {
 }
 
 int main() {
-    int n = 8;
-    printf("Number of disks: %d\n", n);
-    printf("Minimum moves for %d disks (4 pegs): %d\n", n, revesPuzzle(n));
-    printf("Time Complexity: O(n^2)\n");
-    printf("Space Complexity: O(n)\n");
+    int n;
+    printf("Enter number of disks: ");
+    scanf("%d", &n);
+
+    int moves = revesPuzzle(n);
+
+    printf("\nNumber of disks : %d\n", n);
+    printf("Minimum moves   : %d\n", moves);
+
     return 0;
 }

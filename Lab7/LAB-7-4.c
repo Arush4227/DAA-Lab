@@ -30,11 +30,12 @@ void turnOn(int n) {
 }
 
 int main() {
-    int n = 4;
+    int n;
+    printf("Enter number of switches: ");
+    scanf("%d", &n);
     turnOff(n);
     printf("Number of switches: %d\n", n);
     printf("Minimum moves to turn all off: %d\n", moves);
-    printf("Time Complexity: O(2^n)\n");
-    printf("Space Complexity: O(n)\n");
+
     return 0;
 }

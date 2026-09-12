@@ -12,10 +12,11 @@ void findTarget(int n) {
 }
 
 int main() {
-    int n = 5;
+    int n;
+    printf("Enter total number of shots: ");
+    scanf("%d", &n);
     findTarget(n);
     printf("Total shots: %d\n", 2 * (n - 2));
-    printf("Time Complexity: O(n)\n");
-    printf("Space Complexity: O(1)\n");
+
     return 0;
 }

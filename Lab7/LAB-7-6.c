@@ -40,18 +40,52 @@ int bestTimeToBeAlive(int births[], int deaths[], int n, int *best_year) {
     return max_alive;
 }
 
-int main() {
-    int births[] = {1879, 1642, 1831, 1564, 1942};
-    int deaths[] = {1955, 1727, 1879, 1642, 2018};
-    int n = sizeof(births) / sizeof(births[0]);
-    int best_year;
+int main()
+{
+    int n;
 
+    printf("Enter the number of scientists: ");
+    scanf("%d", &n);
+
+    int *births = malloc(n * sizeof(int));
+    int *deaths = malloc(n * sizeof(int));
+
+    if (births == NULL || deaths == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        free(births);
+        free(deaths);
+        return 1;
+    }
+
+    printf("\nEnter birth year and death year for each scientist:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("Scientist %d birth year: ", i + 1);
+        scanf("%d", &births[i]);
+
+        printf("Scientist %d death year: ", i + 1);
+        scanf("%d", &deaths[i]);
+
+        if (deaths[i] < births[i])
+        {
+            printf("Invalid input: death year cannot be earlier than birth year.\n");
+            free(births);
+            free(deaths);
+            return 1;
+        }
+    }
+
+    int best_year;
     int max_scientists = bestTimeToBeAlive(births, deaths, n, &best_year);
 
-    printf("Best year to be alive: %d\n", best_year);
-    printf("Max prominent scientists alive: %d\n", max_scientists);
-    printf("Time Complexity: O(n log n)\n");
-    printf("Space Complexity: O(n)\n");
+    printf("\n========== Result ==========\n");
+    printf("Best year to be alive       : %d\n", best_year);
+    printf("Maximum scientists alive   : %d\n", max_scientists);
+
+    free(births);
+    free(deaths);
 
     return 0;
 }
